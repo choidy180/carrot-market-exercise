@@ -3,7 +3,7 @@
   <img src="./public/carrot.jpg" alt="coin Banner" width="200px" />
 </p>
 
-<h1 align="center">🪙 COIN TRACKER</h1>
+<h1 align="center">🥕 Carrot Clone</h1>
 <p align="center">
   <b>Next.js와 Tailwinds CSS를 이용한 당근마켓 클론코딩</b>
 </p>
