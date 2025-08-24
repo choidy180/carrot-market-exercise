@@ -41,7 +41,7 @@
 ```bash
 # 1) 레포지토리 복제
 git clone https://github.com/choidy180/carrot-market-exercise
-cd poke-next
+cd carrot-market-exercise
 
 # 2) 의존성 설치
 npm install
