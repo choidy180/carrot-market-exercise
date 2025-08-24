@@ -1,34 +1,105 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- BANNER -->
+<p align="center">
+  <img src="./public/coin.jpg" alt="coin Banner" width="200px" />
+</p>
 
-## Getting Started
+<h1 align="center">🪙 COIN TRACKER</h1>
+<p align="center">
+  <b>암호화폐의 시세와 그래프를 확인할 수 있는 리액트 + 타입스크립트 프로젝트</b>
+</p>
 
-First, run the development server:
+<p align="center">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/ReactQuery-FF4154?style=flat-square&logo=ReactQuery&logoColor=white"/>
+  <img src="https://img.shields.io/badge/ReactRouter-CA4245?style=flat-square&logo=ReactRouter&logoColor=white"/>
+  <img src="https://img.shields.io/badge/ApexCharts-0F7BFF?style=flat-square&logo=apachespark&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Recoil-3578E5?style=flat-square&logo=recoil&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=000"/>
+</p>
 
+---
+
+##  기능
+- 📈 실시간 시세 확인 (React Query)
+- 📊 코인 차트 (ApexCharts)
+- 🧭 중첩 라우팅 (React Router)
+- 🌓 다크/라이트 테마 (Recoil)
+- 🧩 타입 세이프티 (TypeScript 인터페이스)
+- 🧠 SEO 최적화 (React Helmet)
+---
+
+##  기술 스택
+<p align="center">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/ReactQuery-FF4154?style=flat-square&logo=ReactQuery&logoColor=white"/>
+  <img src="https://img.shields.io/badge/ReactRouter-CA4245?style=flat-square&logo=ReactRouter&logoColor=white"/>
+  <img src="https://img.shields.io/badge/ApexCharts-0F7BFF?style=flat-square&logo=apachespark&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Recoil-3578E5?style=flat-square&logo=recoil&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=000"/>
+</p>
+
+---
+
+##  라이브 데모
+-  URL: 현재 미배포
+
+---
+
+##  프로젝트 요약
+#### 1. 코인의 정보와 시세표 제공
+#### 2. 코인 검색 및 화폐단위별, 국가별 시세 그래프 제공
+#### 3. 테마와 그래프 선택하여 사용자가 원하는 정보로 볼 수 있는 기능 제공
+
+
+
+##  Install
 ```bash
+# 1) 레포지토리 복제
+git clone https://github.com/choidy180/React_coin_tracking_application
+cd poke-next
+
+# 2) 의존성 설치
+npm install
+
+# 3) 개발 서버 실행
 npm run dev
-# or
-yarn dev
+# 브라우저에서 http://localhost:3000, http://127.0.0.1:3000 열기
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📡 Example Code (Coin Api)
+```bash
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+const BASE_URL = `https://api.coinpaprika.com/v1`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+export function fetchCoins() {
+  return fetch(`${BASE_URL}/coins`).then((response) => 
+    response.json()
+  );
+}
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+export function fetchCoinInfo(coinId:string){
+  return fetch(`${BASE_URL}/coins/${coinId}`).then((response) => 
+    response.json()
+  );
+}
 
-## Learn More
+export function fetchCoinTickers(coinId:string){
+  return fetch(`${BASE_URL}/tickers/${coinId}`).then((response) => 
+    response.json()
+  );
+}
 
-To learn more about Next.js, take a look at the following resources:
+export function fetchCoinHistory(coinId:string){
+  // 종료
+  const endDate = Math.floor(Date.now() / 1000);
+  // 시작
+  const startDate = endDate - 60 * 60 * 24 * 7; 
+  return fetch(
+    `${BASE_URL}/coins/${coinId}/ohlcv/historical?start=${startDate}&end=${endDate}`
+  ).then((response) => response.json());
+}
+});
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
